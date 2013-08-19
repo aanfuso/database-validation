@@ -1,18 +1,20 @@
 module DatabaseValidation
   module ModelAdditions
     def limit_for(attr)
-      attr = attr.to_s
-      columns_hash[attr].limit
+      columns_hash.with_indifferent_access[attr].limit
     end
 
-    def validate_limit_of(*args)
-      args.each do |attr|
-        validate_attr(attr)
+    def validate_limits(options = {})
+      columns = columns_hash.with_indifferent_access.except!(:id)
+
+      case true
+      when options[:only].present?
+        columns = columns.extract!(*options[:only])
+      when options[:except].present?
+        columns = columns.except!(*options[:except])
       end
-    end
 
-    def validate_all
-      columns_hash.keys.each do |attr|
+      columns.keys.each do |attr|
         validate_attr(attr)
       end
     end

@@ -1,7 +1,6 @@
 module DatabaseValidation
   module ViewHelpers
-    def max(object, attr)
-      attr = attr.to_s
+    def maxlength_for(object, attr)
       object.class.limit_for(attr)
     end
   end
