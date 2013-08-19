@@ -1,6 +1,6 @@
 # Database Validation
 
-Is a simple way to add validations for models and views through the limits established in your database.
+Is a simple way to add Active Record Validations to models and views through the limits established in your database.
 
 ## Installation
 
@@ -18,14 +18,36 @@ Or install it yourself as:
 
 ## Usage
 
-Add this method to validate model you want to add validations for all attributes
+### Models Validation
 
-    validate_limits
+Add this method to all the models that you want to add validations to
+all its attributes.
 
-Or, you can pass each attribute you want to validate.
+    class SomeModel < ActiveRecord::Base
+      validate_limits
 
-    validate_limit_of :email, :credit_card
+      # your associations
+      # your validations
+      # your methods
+    end
 
+Or you can pass, as an option, an array with the attributes you want to
+be skipped for validations OR the few you want to validate.
+
+    validate_limits only: :email
+    or
+    validate_limits only: [:email, :credit_card]
+
+    validate_limits except: :email
+    or
+    validate_limits except: [:email, :credit_card]
+
+### Views Validation
+
+Call maxlength_for helper method to validate the length of an attribute.
+
+    form_for @object do |f|
+      f.text_field :attribute, maxlength: maxlength_for(@object, :attribute)
 
 ## Contributing
 

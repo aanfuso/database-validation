@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Agustin Anfuso"]
   spec.email         = ["anfusoagustin89@gmail.com"]
   spec.summary       = %q{Length limit validations through database for Rails.}
-  spec.description   = %q{Simple way to add validations for models and views through the limits established in your database.}
+  spec.description   = %q{Simple way to add Active Record Validations to models and views through the limits established in your database.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
