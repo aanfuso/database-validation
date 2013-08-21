@@ -6,7 +6,7 @@ Is a simple way to add Active Record Validations to models and views through the
 
 Add this line to your application's Gemfile:
 
-    gem 'database_validations'
+    gem 'database-validation'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install database_validations
+    $ gem install database-validation
 
 ## Usage
 
@@ -26,28 +26,17 @@ all its attributes.
     class SomeModel < ActiveRecord::Base
       validate_limits
 
-      # your associations
-      # your validations
-      # your methods
+      # your stuff
     end
 
 Or you can pass, as an option, an array with the attributes you want to
 be skipped for validations OR the few you want to validate.
 
-    validate_limits only: :email
-    or
-    validate_limits only: [:email, :credit_card]
+    validate_limits only: [:email]
 
-    validate_limits except: :email
-    or
+or
+
     validate_limits except: [:email, :credit_card]
-
-### Views Validation
-
-Call maxlength_for helper method to validate the length of an attribute.
-
-    form_for @object do |f|
-      f.text_field :attribute, maxlength: maxlength_for(@object, :attribute)
 
 ## Contributing
 
