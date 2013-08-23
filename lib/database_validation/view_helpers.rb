@@ -1,7 +1,11 @@
 module DatabaseValidation
   module ViewHelpers
-    def maxlength_for(object, attr)
-      object.class.limit_of(attr)
+    class ActionView::Helpers::FormBuilder
+      def text_field_with_maxlength(method, options = {})
+        options[:maxlength] ||= @object.class.limit_for(method)
+        text_field_without_maxlength(method, options.merge(maxlength: options[:maxlength]))
+      end
+      alias_method_chain :text_field, :maxlength
     end
   end
 end

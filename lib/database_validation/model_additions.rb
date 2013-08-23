@@ -3,20 +3,24 @@ module DatabaseValidation
     # Avoids adding LengthValidator to boolean, date or datetime attributes.
     AVAILABLE_TYPES = [:string, :text, :integer, :decimal, :float]
 
-    def limit_of(attr)
-      columns_hash.with_indifferent_access[attr].limit
+    def limit_for(attr)
+      columns_hash.with_indifferent_access[attr].limit if column_belongs?(attr)
     end
 
-    def type_of(attr)
-      columns_hash.with_indifferent_access[attr].type
+    def type_for(attr)
+      columns_hash.with_indifferent_access[attr].type if column_belongs?(attr)
     end
 
     def valid_limit?(attr)
-      limit_of(attr) != nil
+      limit_for(attr) != nil
     end
 
     def valid_type?(attr)
-      AVAILABLE_TYPES.include?(type_of(attr))
+      AVAILABLE_TYPES.include?(type_for(attr))
+    end
+
+    def column_belongs?(attr)
+      column_names.map(&:to_sym).include?(attr)
     end
 
     def validate_limits(options = {})
@@ -36,7 +40,7 @@ module DatabaseValidation
 
     private
       def validate_attr(attr)
-        validates attr, length: { maximum: limit_of(attr) }
+        validates attr, length: { maximum: limit_for(attr) }
       end
   end
 end
