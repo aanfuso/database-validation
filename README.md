@@ -38,6 +38,11 @@ or
 
     validate_limits except: [:email, :credit_card]
 
+### Views Validation
+
+  Views are automatically validated by now.
+  However, you can overwrite maxlength option with any value you want.
+
 ## Contributing
 
 1. Fork it
