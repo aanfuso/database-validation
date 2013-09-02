@@ -26,10 +26,9 @@ module DatabaseValidation
     def validate_limits(options = {})
       columns = content_columns.map(&:name).map(&:to_sym)
 
-      case true
-      when options[:only].present?
+      if options[:only].present?
         columns &= [*options[:only]]
-      when options[:except].present?
+      elsif options[:except].present?
         columns -= [*options[:except]]
       end
 
