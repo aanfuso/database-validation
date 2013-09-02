@@ -1,7 +1,7 @@
 module DatabaseValidation
   module ModelAdditions
     # Avoids adding LengthValidator to boolean, date or datetime attributes.
-    AVAILABLE_TYPES = [:string, :text, :integer, :decimal, :float]
+    AVAILABLE_TYPES = [:string, :integer, :decimal, :float]
 
     def limit_for(attr)
       columns_hash.with_indifferent_access[attr].limit if column_belongs?(attr)
