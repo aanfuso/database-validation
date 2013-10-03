@@ -1,4 +1,5 @@
 # Database Validation
+[![Code Climate](https://codeclimate.com/github/eventioz/database-validation.png)](https://codeclimate.com/github/eventioz/database-validation)
 
 Is a simple way to add Active Record Validations to models and views through the limits established in your database.
 
