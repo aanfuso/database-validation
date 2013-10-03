@@ -41,8 +41,19 @@ or
 
 ### Views Validation
 
-  Views are automatically validated by now.
-  However, you can overwrite maxlength option with any value you want.
+  form_for **must** have an associated object.
+
+    <%= form_for @object do |f| %>
+
+  form_for automatically adds *maxlength* option with the value
+corresponding to the limit of the column in the database to all its text_fields.
+
+  However, you can overwrite *maxlength* option with any value you want
+or...
+
+  Add *skip_validations* option to your form and set it to true to prevent gem from adding validations.
+
+    <%= form_for @object, skip_validations: true do |f| %>
 
 ## Contributing
 
