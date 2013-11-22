@@ -2,7 +2,7 @@
 [![Gem Version](https://badge.fury.io/rb/database-validation.png)](http://badge.fury.io/rb/database-validation)
 [![Code Climate](https://codeclimate.com/github/eventioz/database-validation.png)](https://codeclimate.com/github/eventioz/database-validation)
 
-Is a simple way to add Active Record Validations to models and views through the limits established in your database.
+Is a simple way to add Active Record String Validations to models and views through the limits established in your database.
 
 ## Installation
 
@@ -13,10 +13,6 @@ Add this line to your application's Gemfile:
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install database-validation
 
 ## Usage
 
@@ -52,14 +48,16 @@ corresponding to the limit of the column in the database to all its text_fields.
   However, you can overwrite *maxlength* option with any value you want
 or...
 
-  Add *skip_validations* option to your form and set it to true to prevent gem from adding validations.
+  Add *skip_validations* option to your form and set it to true to prevent gem from adding validations to your form.
 
     <%= form_for @object, skip_validations: true do |f| %>
 
 ## Contributing
 
 1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
+2. Create your feature/improvement branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+Code improvements are welcome.
