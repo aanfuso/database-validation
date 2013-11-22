@@ -1,3 +1,8 @@
+## v0.1.0
+
+* Add - form option to skip validations.
+
 ## v0.1.1
 
-* Just strings are going to be validated
+* Length validations only on strings.
+* Initial release.
